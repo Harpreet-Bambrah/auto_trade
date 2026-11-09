@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTrade Muktsar - Local Used Cars</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#dc2626', // Red 600
+                        dark: '#111827', // Gray 900
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-car-side text-2xl text-primary mr-2"></i>
+                    <span class="text-2xl font-bold text-dark tracking-tight">Auto<span class="text-primary">Trade</span> <span class="text-sm font-normal text-gray-500 ml-1">Muktsar</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-gray-600 hover:text-primary font-medium transition">Buy a Car</a>
+                    <a href="#" class="text-gray-600 hover:text-primary font-medium transition">Sell Your Car</a>
+                    <a href="#" class="text-gray-600 hover:text-primary font-medium transition">Local Valuation</a>
+                    <button class="bg-dark hover:bg-gray-800 text-white px-5 py-2 rounded-lg font-medium transition">
+                        Sign In
+                    </button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-dark focus:outline-none text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Search -->
+    <div class="relative pt-16">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0 h-[500px]">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80" alt="Cars" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-dark bg-opacity-70"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 text-center md:text-left">
+                Find Your Perfect Drive Locally
+            </h1>
+            <p class="text-lg text-gray-300 mb-8 text-center md:text-left max-w-2xl">
+                Browse verified pre-owned cars in Sri Muktsar Sahib and nearby areas. Buy directly from owners or certified local dealers.
+            </p>
+
+            <!-- Search Panel -->
+            <div class="bg-white p-6 rounded-xl shadow-xl max-w-4xl">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Make</label>
+                        <select class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-primary focus:border-primary outline-none">
+                            <option>All Makes</option>
+                            <option>Maruti Suzuki</option>
+                            <option>Hyundai</option>
+                            <option>Mahindra</option>
+                            <option>Honda</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Model</label>
+                        <select class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-primary focus:border-primary outline-none">
+                            <option>All Models</option>
+                            <option>Thar</option>
+                            <option>Creta</option>
+                            <option>Baleno</option>
+                            <option>City</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Budget</label>
+                        <select class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-primary focus:border-primary outline-none">
+                            <option>Under ₹3 Lakh</option>
+                            <option>₹3 Lakh - ₹5 Lakh</option>
+                            <option>₹5 Lakh - ₹10 Lakh</option>
+                            <option>₹10+ Lakh</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button class="w-full bg-primary hover:bg-red-700 text-white font-bold p-2.5 rounded-lg transition flex justify-center items-center">
+                            <i class="fas fa-search mr-2"></i> Search Cars
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Cars Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-3xl font-bold text-dark">Local Featured Vehicles</h2>
+                <p class="text-gray-500 mt-2">Verified PB-registered cars available for immediate inspection.</p>
+            </div>
+            <a href="#" class="hidden sm:block text-primary font-medium hover:underline">View All Inventory <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+
+        <!-- Car Grid -->
+        <div id="carGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Cards will be injected here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Sell Your Car CTA -->
+    <section class="bg-dark py-16 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-2/3 mb-8 md:mb-0">
+                <h2 class="text-3xl font-bold text-white mb-4">Want to sell your car in Muktsar?</h2>
+                <p class="text-gray-400 text-lg mb-6">Skip the hassle of unorganized dealers. Get an instant valuation, schedule a home inspection, and get paid within 24 hours.</p>
+                <div class="flex space-x-4">
+                    <button class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg">
+                        Get Free Valuation
+                    </button>
+                    <button class="bg-transparent border border-white text-white hover:bg-white hover:text-dark px-6 py-3 rounded-lg font-bold transition">
+                        How it works
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/3 flex justify-center">
+                <i class="fas fa-map-marker-alt text-9xl text-gray-700 opacity-50"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>&copy; 2026 AutoTrade Muktsar Platform. Built for demonstration purposes.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to render demo data -->
+    <script>
+        // 1. Mock Data for 10 Vehicles based on local Punjab/Muktsar deals
+        const cars = [
+            {
+                id: 1,
+                title: '2023 Mahindra Thar LX 4x4',
+                price: '₹15,50,000',
+                mileage: '12,000 km',
+                fuel: 'Diesel',
+                transmission: 'Manual',
+                location: 'Sri Muktsar Sahib',
+                image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 2,
+                title: '2020 Hyundai Creta SX Opt',
+                price: '₹12,45,000',
+                mileage: '41,000 km',
+                fuel: 'Diesel',
+                transmission: 'Automatic',
+                location: 'Malout',
+                image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80'
+            },
+          {
+                id: 9,
+                title: '2018 Maruti Suzuki Wagon R VXi',
+                price: '₹3,65,000',
+                mileage: '48,000 km',
+                fuel: 'Petrol',
+                transmission: 'Manual',
+                location: 'Malout Road',
+                image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 4,
+                title: '2021 Maruti Suzuki Baleno Alpha',
+                price: '₹6,80,000',
+                mileage: '28,000 km',
+                fuel: 'Petrol',
+                transmission: 'Manual',
+                location: 'Jalalabad Road',
+                image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 5,
+                title: '2017 Honda City VX',
+                price: '₹6,20,000',
+                mileage: '55,500 km',
+                fuel: 'Petrol',
+                transmission: 'Manual',
+                location: 'Muktsar City',
+                image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 6,
+                title: '2016 Maruti Suzuki Ciaz ZDi',
+                price: '₹5,10,000',
+                mileage: '74,000 km',
+                fuel: 'Diesel',
+                transmission: 'Manual',
+                location: 'Kotkapura Road',
+                image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 7,
+                title: '2018 Ford EcoSport Titanium',
+                price: '₹4,80,000',
+                mileage: '55,500 km',
+                fuel: 'Diesel',
+                transmission: 'Manual',
+                location: 'Muktsar City',
+                image: 'https://images.unsplash.com/photo-1517153295259-74eb0b416cee?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 8,
+                title: '2015 Hyundai Grand i10 Magna',
+                price: '₹3,90,000',
+                mileage: '60,000 km',
+                fuel: 'Petrol',
+                transmission: 'Manual',
+                location: 'Sri Muktsar Sahib',
+                image: 'https://images.unsplash.com/photo-1619682817481-e994891cd1f5?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 9,
+                title: '2018 Maruti Suzuki Wagon R VXi',
+                price: '₹3,65,000',
+                mileage: '48,000 km',
+                fuel: 'Petrol',
+                transmission: 'Manual',
+                location: 'Malout Road',
+                image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 10,
+                title: '2011 Chevrolet Beat LT',
+                price: '₹1,40,000',
+                mileage: '85,000 km',
+                fuel: 'Petrol',
+                transmission: 'Manual',
+                location: 'Sri Muktsar Sahib',
+                image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80'
+            }
+        ];
+
+        // 2. Render Cards into Grid
+        const carGrid = document.getElementById('carGrid');
+
+        cars.forEach(car => {
+            const cardHTML = `
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-transform duration-300 hover:-translate-y-1 group cursor-pointer">
+                    <!-- Image Wrapper -->
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="${car.image}" alt="${car.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-dark">
+                            <i class="fas fa-check-circle text-green-600 mr-1"></i> PB Reg
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-white">
+                            <i class="fas fa-map-marker-alt mr-1"></i> ${car.location}
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-dark truncate mb-1">${car.title}</h3>
+                        <p class="text-2xl font-extrabold text-primary mb-4">${car.price}</p>
+                        
+                        <!-- Specs -->
+                        <div class="grid grid-cols-3 gap-2 border-t border-gray-100 pt-4 mb-4">
+                            <div class="text-center">
+                                <i class="fas fa-road text-gray-400 mb-1"></i>
+                                <p class="text-xs text-gray-600 font-medium">${car.mileage}</p>
+                            </div>
+                            <div class="text-center border-l border-r border-gray-100">
+                                <i class="fas fa-gas-pump text-gray-400 mb-1"></i>
+                                <p class="text-xs text-gray-600 font-medium">${car.fuel}</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-cogs text-gray-400 mb-1"></i>
+                                <p class="text-xs text-gray-600 font-medium">${car.transmission}</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Action -->
+                        <button class="w-full bg-gray-100 hover:bg-dark hover:text-white text-dark font-medium py-2 rounded transition">
+                            Contact Seller
+                        </button>
+                    </div>
+                </div>
+            `;
+            carGrid.insertAdjacentHTML('beforeend', cardHTML);
+        });
+    </script>
+</body>
+</html>
